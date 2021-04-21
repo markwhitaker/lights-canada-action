@@ -115,7 +115,7 @@ $(function () {
 
     function initialiseMap() {
         _map = new jvm.Map({
-            map: "us_aea",
+            map: "ca_lcc",
             container: $("#map"),
             backgroundColor: MAP_BACKGROUND_COLOUR,
             zoomMin: 0.9,
