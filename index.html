@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="The Wittertainment US Movie Road Trip">
+  <meta name="author" content="Mark Whitaker">
+
+  <title>ROUTE 50 FLICKS | The Wittertainment US Movie Road Trip</title>
+
+  <link rel="shortcut icon" type="image/png" href="images/icon32.png">
+  <link rel="icon" sizes="192x192" href="images/icon192.png">
+  <link rel="icon" sizes="128x128" href="images/icon128.png">
+  <link rel="apple-touch-icon" href="images/icon60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/icon72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/icon76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/icon114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="images/icon120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="images/icon152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="images/icon167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icon180.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monoton&family=Tajawal:wght@400&family=Raleway:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/libs/jquery-jvectormap-2.0.5.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
+</head>
+
+<body>
+  <div class="container content">
+
+    <div class="row masthead flex-row-reverse">
+      <div class="col-md-3 align-self-start text-right">
+        <span id="logo"></span>
+      </div>
+      <div class="col-md-9 align-self-end">
+        <h1>Route <span id="digit5">5</span><span id="digit0">0</span> Flicks</h1>
+        <h4>The Wittertainment US Movie Road Trip</h4>
+      </div>
+    </div>
+
+    <div id="topContent">
+
+      <div class="row">
+
+        <div class="col-lg-7" id="description">
+          <p>After the roaring success of <a href="https://witterworld.com">WITTERWORLD</a>, and with the pandemic showing no sign of easing off, here we are again. This time it's one film made (or set) in each of the 50 states of the USA.</p>
+          <p>So charge your engines, step on the gas and <a href="https://www.youtube.com/watch?v=dCYApJtsyd0">get your kicks</a> on <strong>Route 50 Flicks</strong>!</p>
+          <p>We've got <span id="filmCount">0</span> films so far, curated by <a href="https://www.denofgeek.com/movies/the-beginner-s-guide-to-wittertainment/">Wittertainees</a> during 2021 what with <a href="https://en.wikipedia.org/wiki/COVID-19_pandemic">one thing and another</a>.</p>
+          <p>View the full list on <a href="https://letterboxd.com/markwhitaker/list/route-50-flicks/">Letterboxd</a> and <a href="https://www.imdb.com/list/ls084948727/">IMDb</a>.</p>
+          <p>Made by Mark Whitaker.</p>
+        </div>
+
+        <div class="col-lg-5">
+          <div id="suggestFilm">
+            <h5>Got a film to add?</h5>
+            <div>Let the good doctors know via <a href="mailto:mayo@bbc.co.uk">email</a>, <a href="https://www.facebook.com/KermodeMayo">Facebook</a> or <a href="https://twitter.com/wittertainment">Twitter</a>.</div>
+          </div>
+
+          <div id="buyMerch">
+            <span id="tshirtIcon"></span>
+            <h5>Goodies!</h5>
+            <div><a href="https://www.redbubble.com/people/bitrot/shop?asc=u&collections=188012">Visit the shop</a> for all manner of Wittertainment merchandise.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Map/list buttons -->
+  <div class="container" id="sectionTabs">
+    <button type="button" id="btnShowMap" class="selected">Map</button>
+    <button type="button" id="btnShowListStates">States</button>
+    <button type="button" id="btnShowListMovies">Movies</button>
+    <button type="button" id="btnShowAbout">About</button>
+  </div>
+
+  <!-- Map -->
+  <div id="sections">
+    <div class="container-fluid section" id="sectionMap">
+      <div id="map"></div>
+    </div>
+
+    <!-- States -->
+    <div class="container-fluid section" id="sectionListStates" style="display: none;">
+      <div class="container content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="listIntroduction">
+              Every state we&rsquo;ve travelled through so far...
+            </div>
+            <div class="list" id="listStates"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movies -->
+    <div class="container-fluid section" id="sectionListMovies" style="display: none;">
+      <div class="container content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="listIntroduction">
+              Every movie we&rsquo;ve watched so far...
+            </div>
+            <div class="list" id="listMovies"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid section" id="sectionAbout" style="display: none;">
+      <div class="container content">
+        <div class="row">
+          <div class="col-md-9">
+            <div id="about">
+              <p>
+                I created this site in January 2021 to track a <a href="https://witterworld.com">suspiciously familiar</a> new feature on the <a href="https://www.bbc.co.uk/programmes/b00lvdrj">Kermode and Mayo's Film Review</a> show on BBC Radio 5 Live (known to its fans as <a href="https://www.denofgeek.com/movies/the-beginner-s-guide-to-wittertainment/">Wittertainment</a>).
+              </p>
+              <p>
+                Listener Sarah Lynch emailed the show on 15 January <span class="listen">(<a href="https://www.bbc.co.uk/sounds/play/m000r4t1">listen here at 22:37</a>)</span>, saying she and her husband were planning a virtual road trip around the United States in February.
+                On 22 January we set off from Washington state on our lockdown tour, with listeners contributing a film for each state as we go.
+              </p>
+              <p>
+                A couple of weeks later, on 5 February , this site was announced to the world!
+                <span class="listen">(Listen <a href="https://soundcloud.com/pigonwheels/route-50-flicks-wittertainment-5-february-2021">on SoundCloud</a> or <a href="https://www.bbc.co.uk/sounds/play/m000rwtm">here at 01:14:19</a>.)</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="container-fluid" id="stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2><span id="statsLogo"></span>Stats zone</h2>
+        </div>
+      </div>
+      <div class="row statsSections">
+        <div class="col-lg-3">
+          <h3>Movies by decade</h3>
+          <canvas id="byDecade"></canvas>
+        </div>
+        <div class="col-lg-3">
+          <h3>Oldest &amp; newest</h3>
+          <div id="oldestNewest"></div>
+        </div>
+        <div class="col-lg-3">
+          <h3>Shortest &amp; longest title</h3>
+          <div id="longestShortest"></div>
+        </div>
+        <div class="col-lg-3">
+          <h3>The state is in the title</h3>
+          <div id="stateInTitle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="container content">
+    <div class="row" id="footer">
+      <div class="col-md-12">
+        <p>Made by <a href="https://twitter.com/travischuckle">Mark Whitaker</a>.</p>
+        <p>Part of the <a href="https://witterworld.com/">WITTERWORLD</a> family.</p>
+        <p>Licensed under the <a href="https://github.com/markwhitaker/route50flicks/blob/master/LICENSE">GNU General Public License v3.0</a>.</p>
+        <p>Made with <a href="https://getbootstrap.com/">Bootstrap</a>, <a href="https://jvectormap.com/">jVectorMap</a>, <a href="https://flagpedia.net/">Flagpedia</a>, <a href="https://jquery.com/">jQuery</a>, <a href="https://www.chartjs.org/">Chart.js</a>, <a href="https://code.visualstudio.com/">Visual Studio Code</a> and <a href="https://affinity.serif.com/en-gb/designer/">Affinity Designer</a>.</p>
+        <p>Hosted on <a href="https://www.netlify.com/">Netlify</a>.</p>
+        <p>Open sourced on <a href="https://github.com/markwhitaker/route50flicks">GitHub</a>.</p>
+        <p>No cookies. No trackers.</p>
+        <p>Hello to Oscar Isaac.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal dialog -->
+  <div class="modal fade" id="filmDetailsModal" tabindex="-1" role="dialog" aria-labelledby="filmTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><img id="filmStateFlag"><span id="filmState"></span></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div id="filmTitleContainer">
+            <h3 id="filmTitleAndYear">
+              <span id="filmTitle"></span>&nbsp;<small>(<span id="filmYear"></span>)</small>
+            </h3>
+            <div id="filmOriginalTitle"></div>
+          </div>
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 px-0">
+                <div id="filmImageContainer">
+                  <img id="filmImage"/>
+                </div>
+              </div>
+              <div class="col-md-6 px-0 filmLinks">
+                <a class="btn btn-dark" id="trailerLink">Watch the trailer</a>
+                <a class="btn btn-dark" id="reviewLink">Watch <span id="filmReviewer">Mark</span>&rsquo;s review</a>
+                <a class="btn btn-dark" id="imdbLink">IMDb</a>
+                <a class="btn btn-dark" id="rottenTomatoesLink">Rotten Tomatoes</a>
+                <a class="btn btn-dark" id="letterboxdLink">Letterboxd</a>
+                <a class="btn btn-dark" id="justwatchLink">JustWatch</a>
+                <a class="btn btn-dark" id="wikipediaLink">Wikipedia</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+  <script src="js/libs/jquery-jvectormap-2.0.5.min.js"></script>
+  <script src="js/libs/jquery-jvectormap-us-aea.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js" integrity="sha256-9CKDuBNIQo/dQgrK9nyK+XcD2MBjb0JgnPMANrQw6Cs=" crossorigin="anonymous"></script>
+  <script src="js/script.min.js"></script>
+</body>
+
+</html>
