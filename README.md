@@ -1,10 +1,10 @@
 ![icon](images/logo72.png)
 
-# ROUTE 50 FLICKS
+# LIGHTS! CANADA! ACTION!
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5c2e3629-bd79-49a6-adc5-55470ca0a5e7/deploy-status)](https://app.netlify.com/sites/route50flicks/deploys)
 
-Full source code for [Route 50 Flicks](https://route50flicks.com), the Wittertainment US Movie Road Trip.
+Full source code for [Lights! Canada! Action!](https://canada.witterworld.com), the Wittertainment Canada Movie Road Trip.
 
 ## How do I build it?
 
