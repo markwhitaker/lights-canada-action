@@ -19,7 +19,6 @@ $(function () {
     ];
     const ALT_TEXT_FLAG = "State flag of {0}";
     const ALT_TEXT_POSTER = "Film poster for {0}";
-    const URL_FLAG = "https://flagcdn.com/{0}.svg";
     const URL_IMDB = "https://www.imdb.com/title/{0}/";
     const URL_JUST_WATCH = "https://www.justwatch.com/uk/movie/{0}";
     const URL_LETTERBOXD = "https://letterboxd.com/film/{0}/";
@@ -65,7 +64,7 @@ $(function () {
         initialiseMap();
         initialiseStatesList();
         initialiseMoviesList();
-        initialiseStats();
+//        initialiseStats();
     });
 
     //-----------------------------------------------------------
@@ -186,7 +185,7 @@ $(function () {
             })
             .prepend($("<img/>")
                 .prop({
-                    src: flagUrl(film),
+                    src: film.flag,
                     alt: ALT_TEXT_FLAG.format(film.state)
                 })
                 .on("error", function () {
@@ -207,7 +206,7 @@ $(function () {
         $("#filmCount").text(_filmsSortedByState.length);
     }
 
-    function initialiseStats() {
+/*    function initialiseStats() {
         initialiseStatsByDecade();
         initialiseStatsStateInTitle();
         initialiseStatsOldestNewest();
@@ -287,7 +286,7 @@ $(function () {
         $("#longestShortest").append(
             buildMovieButton(filmsSortedByTitleLength.shift(), BUTTON_TYPE.TITLE),
             buildMovieButton(filmsSortedByTitleLength.pop(), BUTTON_TYPE.TITLE));
-    }
+    }*/
 
     function showMap() {
         selectButton("#btnShowMap");
@@ -354,7 +353,7 @@ $(function () {
         $("#filmYear").text(film.year);
         $("#filmStateFlag")
             .prop({
-                src: flagUrl(film),
+                src: film.flag,
                 alt: ALT_TEXT_FLAG.format(film.state)
             });
 
@@ -393,12 +392,6 @@ $(function () {
                 href: url.format(value)
             })
             .toggle(!!value);
-    }
-
-    function flagUrl(film) {
-        return film.stateCode === "US-DC"
-            ? "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_the_District_of_Columbia.svg"
-            : URL_FLAG.format(film.stateCode.toLowerCase());
     }
 
     String.prototype.format = function () {
