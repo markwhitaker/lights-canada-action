@@ -1,10 +1,10 @@
 // ---------- Variables ----------
 
 // Colours
-@colour-light-blue: #E6F6FA;
-@colour-blue: #0400B8;
+@colour-dark-red: #C20000;
 @colour-red: #E00000;
-@colour-light-red: #FFD6DC;
+@colour-light-red: #FF0000;
+@colour-very-light-red: #FFD6DC;
 @colour-white: #ffffff;
 @colour-white-semi-opaque: #ffffffaa;
 @colour-light-grey: #f0f0f0;
@@ -15,7 +15,7 @@
 @colour-light-yellow: #FFEEBA;
 
 // Font families
-@font-family-title: Orelega One, Raleway, Arial, Helvetica, sans-serif;
+@font-family-title: Bangers, Raleway, Arial, Helvetica, sans-serif;
 @font-family-default: Raleway, Arial, Helvetica, sans-serif;
 @font-family-international: Raleway, Tajawal, Arial, Helvetica, sans-serif;
 
@@ -77,7 +77,7 @@ body {
     display: inline-block;
     border-radius: @padding-small;
     cursor: pointer;
-    background-color: @colour-blue;
+    background-color: @colour-red;
     color: @colour-white;
     padding: @padding-small @padding-medium;
     margin: 0 @padding-medium @padding-medium 0;
@@ -136,7 +136,7 @@ body {
     display: inline-block;
     font-weight: @font-weight-bold;
     border-radius: @padding-small;
-    background-color: @colour-blue;
+    background-color: @colour-red;
     color: @colour-white;
     padding: 0 @padding-small;
 }
@@ -154,8 +154,14 @@ body {
         font-size: @font-size-xxlarge;
         font-weight: @font-weight-normal;
 
+        #lights {
+            color: @colour-dark-red;
+        }
         #canada {
             color: @colour-red;
+        }
+        #action {
+            color: @colour-light-red;
         }
 
         // Fix the nasty kerning between R and O
@@ -190,7 +196,7 @@ body {
 }
 
 #suggestFilm {
-    background-color: @colour-light-red;
+    background-color: @colour-very-light-red;
     border-radius: @padding-medium;
     position: relative;
     margin-bottom: @padding-large;
@@ -309,7 +315,7 @@ body {
 }
 
 .modal-header {
-    background-color: @colour-blue;
+    background-color: @colour-dark-red;
     color: @colour-white;
 
     h4 {

@@ -6,18 +6,13 @@ $(function () {
     const CHART_BACKGROUND_LINE_COLOUR = "#505050";
     const CHART_FOREGROUND_LINE_COLOUR = "#a0a0a0";
     const ACTIVE_MAP_COLOURS = [
-        "#E1002A",
-        "#CB003B",
-        "#B4004D",
-        "#990062",
-        "#850072",
-        "#6D0084",
-        "#540098",
-        "#3D00AA",
-        "#2600BC",
-        "#0E00CF"
+        "#FF0000",
+        "#F00000",
+        "#E00000",
+        "#D10000",
+        "#C20000"
     ];
-    const ALT_TEXT_FLAG = "State flag of {0}";
+    const ALT_TEXT_FLAG = "Flag of {0}";
     const ALT_TEXT_POSTER = "Film poster for {0}";
     const URL_IMDB = "https://www.imdb.com/title/{0}/";
     const URL_JUST_WATCH = "https://www.justwatch.com/uk/movie/{0}";
@@ -206,7 +201,7 @@ $(function () {
         $("#filmCount").text(_filmsSortedByState.length);
     }
 
-/*    function initialiseStats() {
+    function initialiseStats() {
         initialiseStatsByDecade();
         initialiseStatsStateInTitle();
         initialiseStatsOldestNewest();
@@ -286,7 +281,7 @@ $(function () {
         $("#longestShortest").append(
             buildMovieButton(filmsSortedByTitleLength.shift(), BUTTON_TYPE.TITLE),
             buildMovieButton(filmsSortedByTitleLength.pop(), BUTTON_TYPE.TITLE));
-    }*/
+    }
 
     function showMap() {
         selectButton("#btnShowMap");
