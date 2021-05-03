@@ -199,6 +199,7 @@ $(function () {
 
     function initialiseCount() {
         $("#filmCount").text(_filmsSortedByState.length);
+        $("#filmCountCaption").text(_filmsSortedByState.length === 1 ? "film" : "films");
     }
 
     function initialiseStats() {
