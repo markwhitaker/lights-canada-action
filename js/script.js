@@ -59,7 +59,6 @@ $(function () {
         initialiseMap();
         initialiseStatesList();
         initialiseMoviesList();
-//        initialiseStats();
     });
 
     //-----------------------------------------------------------
@@ -200,88 +199,6 @@ $(function () {
     function initialiseCount() {
         $("#filmCount").text(_filmsSortedByState.length);
         $("#filmCountCaption").text(_filmsSortedByState.length === 1 ? "film" : "films");
-    }
-
-    function initialiseStats() {
-        initialiseStatsByDecade();
-        initialiseStatsStateInTitle();
-        initialiseStatsOldestNewest();
-        initialiseStatsLongestShortestTitle();
-    }
-
-    function initialiseStatsByDecade() {
-        let byDecade = {};
-        _filmsSortedByState.forEach(function (film) {
-            var decade = film.year.toString().slice(0, 3) + "0s";
-            byDecade[decade] = (byDecade[decade] || 0) + 1;
-        });
-
-        const sortedKeys = Object.keys(byDecade).sort();
-        const sortedValues = sortedKeys.map(x => byDecade[x]);
-
-        let chartElement = $("#byDecade");
-        new Chart(chartElement, {
-            type: "bar",
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                borderWidth: 1,
-                scales: {
-                    x: {
-                        grid: {
-                            color: CHART_BACKGROUND_LINE_COLOUR
-                        },
-                        ticks: {
-                            color: CHART_FOREGROUND_LINE_COLOUR
-                        }
-                    },
-                    y: {
-                        grid: {
-                            color: CHART_BACKGROUND_LINE_COLOUR
-                        },
-                        ticks: {
-                            color: CHART_FOREGROUND_LINE_COLOUR
-                        }
-                    }
-                }
-            },
-            data: {
-                labels: sortedKeys,
-                datasets: [{
-                    label: "Total",
-                    fill: true,
-                    data: sortedValues,
-                    backgroundColor: ACTIVE_MAP_COLOURS.slice(0, sortedKeys.length),
-                    borderColor: CHART_FOREGROUND_LINE_COLOUR,
-                    borderWidth: 1
-                }]
-            }
-        });
-    }
-
-    function initialiseStatsStateInTitle() {
-        _filmsSortedByTitle
-            .filter(film => film.title.indexOf(film.state) > -1)
-            .forEach(film => $("#stateInTitle").append(buildMovieButton(film, BUTTON_TYPE.TITLE)));
-    }
-
-    function initialiseStatsOldestNewest() {
-        let filmsSortedByYear = _filmsSortedByTitle.slice().sortBy(SORT_FUNCTION.YEAR);
-
-        $("#oldestNewest").append(
-            buildMovieButton(filmsSortedByYear.shift(), BUTTON_TYPE.TITLE),
-            buildMovieButton(filmsSortedByYear.pop(), BUTTON_TYPE.TITLE));
-    }
-
-    function initialiseStatsLongestShortestTitle() {
-        let filmsSortedByTitleLength = _filmsSortedByTitle.slice().sortBy(SORT_FUNCTION.TITLE_LENGTH);
-
-        $("#longestShortest").append(
-            buildMovieButton(filmsSortedByTitleLength.shift(), BUTTON_TYPE.TITLE),
-            buildMovieButton(filmsSortedByTitleLength.pop(), BUTTON_TYPE.TITLE));
     }
 
     function showMap() {
