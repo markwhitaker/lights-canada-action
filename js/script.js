@@ -55,7 +55,6 @@ $(function () {
     initialiseEventHandlers();
 
     loadData(function () {
-        initialiseCount();
         initialiseMap();
         initialiseStatesList();
         initialiseMoviesList();
@@ -194,11 +193,6 @@ $(function () {
 
     function getFilmTitleAndYear(film) {
         return "{0} ({1})".format(film.title, film.year);
-    }
-
-    function initialiseCount() {
-        $("#filmCount").text(_filmsSortedByState.length);
-        $("#filmCountCaption").text(_filmsSortedByState.length === 1 ? "film" : "films");
     }
 
     function showMap() {
