@@ -13,6 +13,10 @@
 @colour-black: #000000;
 @colour-yellow: #FFB100;
 @colour-light-yellow: #FFEEBA;
+@colour-route-50-flicks-blue: #0400B8;
+@colour-route-50-flicks-light-blue: #E6F6FA;
+@colour-witterworld-blue: #00B3DB;
+@colour-witterworld-light-blue: #E6F6FA;
 
 // Font families
 @font-family-title: Bangers, Raleway, Arial, Helvetica, sans-serif;
@@ -45,6 +49,7 @@
 @tshirt-icon-size: 120px;
 @film-image-width: 200px;
 @film-image-height: 250px;
+@small-icon-size: 50px;
 
 
 // -------------------------------
@@ -121,11 +126,6 @@ body {
         #action {
             color: @colour-light-red;
         }
-
-        // Fix the nasty kerning between R and O
-        &::first-letter {
-            padding-right: 0.001em;
-        }
     }
 
     h4 {
@@ -153,41 +153,32 @@ body {
     }
 }
 
-#buyMerch {
-    background-color: @colour-light-yellow;
+#witterworld,
+#route50flicks {
     border-radius: @padding-medium;
-    position: relative;
-    min-height: @tshirt-icon-size + (@padding-medium * 2);
+    padding: @padding-large @padding-medium @padding-large (@small-icon-size + (@padding-medium * 2));
     margin-bottom: @padding-large;
+    min-height: @padding-xxxlarge;
+    background-size: @small-icon-size @small-icon-size;
+    background-repeat: no-repeat;
+    background-position: @padding-medium;
+}
 
-    & > * {
-        padding: @padding-medium @padding-large @padding-medium (@tshirt-icon-size + (@padding-medium * 2));
-    }
-
-    h5 {
-        font-size: @font-size-xlarge;
-        font-weight: @font-weight-black;
-        text-transform: uppercase;
-        background-color: @colour-yellow;
-        color: @colour-white;
-        border-radius: @padding-medium @padding-medium 0 0;
-        margin: 0;
-    }
-
-    #tshirtIcon {
-        background-image: url(/images/tshirt.svg);
-        background-repeat: no-repeat;
-        position: absolute;
-        left: @padding-medium;
-        top: @padding-small;
-        height: @tshirt-icon-size;
-        width: @tshirt-icon-size;
-        transform: rotate(-10deg);
-        filter: drop-shadow(10px, 10px, 10px, white);
-    }
+#witterworld {
+    background-color: @colour-witterworld-light-blue;
+    background-image: url(/images/witterworld.svg);
 
     a:hover {
-        color: @colour-yellow;
+        color: @colour-witterworld-blue;
+    }
+}
+
+#route50flicks {
+    background-color: @colour-route-50-flicks-light-blue;
+    background-image: url(/images/route50flicks.svg);
+
+    a:hover {
+        color: @colour-route-50-flicks-blue;
     }
 }
 
