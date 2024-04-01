@@ -1,10 +1,8 @@
 "use strict";
 
 $(function () {
-    const MAP_BACKGROUND_COLOUR = "#f0f0f0";
-    const INACTIVE_MAP_COLOUR = "#d0d0d0";
-    const CHART_BACKGROUND_LINE_COLOUR = "#505050";
-    const CHART_FOREGROUND_LINE_COLOUR = "#a0a0a0";
+    const MAP_BACKGROUND_COLOUR = "#F0F0F0";
+    const INACTIVE_MAP_COLOUR = "#D0D0D0";
     const ACTIVE_MAP_COLOURS = [
         "#FF0000",
         "#F00000",
@@ -33,18 +31,10 @@ $(function () {
     });
 
     const SORT_FUNCTION = Object.freeze({
-        TITLE: function (film) {
-            return film.title.sortable();
-        },
-        TITLE_LENGTH: function (film) {
-            return film.title.length;
-        },
-        STATE: function (film) {
-            return film.state;
-        },
-        YEAR: function (film) {
-            return film.year;
-        }
+        TITLE: film => film.title.sortable(),
+        TITLE_LENGTH: film => film.title.length,
+        STATE: film => film.state,
+        YEAR: film => film.year
     });
 
     let _map;
@@ -54,7 +44,7 @@ $(function () {
 
     initialiseEventHandlers();
 
-    loadData(function () {
+    loadData(() => {
         initialiseMap();
         initialiseStatesList();
         initialiseMoviesList();
@@ -65,18 +55,10 @@ $(function () {
     function initialiseEventHandlers() {
         $("a").prop("target", "_blank");
 
-        $("#btnShowMap").click(function () {
-            showMap();
-        });
-        $("#btnShowListStates").click(function () {
-            showListStates();
-        });
-        $("#btnShowListMovies").click(function () {
-            showListMovies();
-        });
-        $("#btnShowAbout").click(function () {
-            showAbout();
-        });
+        $("#btnShowMap").click(() => showMap());
+        $("#btnShowListStates").click(() => showListStates());
+        $("#btnShowListMovies").click(() => showListMovies());
+        $("#btnShowAbout").click(() => showAbout());
 
         $('#filmStateFlag').on({
             error: function () {
@@ -93,8 +75,8 @@ $(function () {
         _filmsSortedByTitle = [];
         _films = {};
 
-        $.getJSON("data/films.json", function (filmsArray) {
-            filmsArray.forEach(function (film) {
+        $.getJSON("data/films.json", filmsArray => {
+            filmsArray.forEach(film => {
                 film.colour = getRandomActiveMapColour();
                 _films[film.stateCode] = film;
             });
@@ -121,10 +103,8 @@ $(function () {
                     attribute: "fill"
                 }]
             },
-            onRegionClick: function (_, stateCode) {
-                showFilmDetails(stateCode);
-            },
-            onRegionTipShow: function (_, tip, code) {
+            onRegionClick: (_, stateCode) => showFilmDetails(stateCode),
+            onRegionTipShow: (_, tip, code) => {
                 let film = _films[code];
                 if (film) {
                     tip.text("{0}: {1} ({2})".format(film.state, film.title, film.year));
@@ -159,10 +139,7 @@ $(function () {
 
     function initialiseList(elementId, array, buttonType) {
         $(elementId).empty();
-
-        array.forEach(function (film) {
-            $(elementId).append(buildMovieButton(film, buttonType));
-        });
+        array.forEach(film => $(elementId).append(buildMovieButton(film, buttonType)));
     }
 
     function buildMovieButton(film, buttonType) {
@@ -173,9 +150,7 @@ $(function () {
                 style: "background-color: {0}".format(film.colour)
             })
             .text(buttonType.getCaption(film))
-            .click(function () {
-                showFilmDetails(film.stateCode);
-            })
+            .click(() => showFilmDetails(film.stateCode))
             .prepend($("<img/>")
                 .prop({
                     src: film.flag,
