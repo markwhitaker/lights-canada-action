@@ -2,7 +2,7 @@
 
 # LIGHTS! CANADA! ACTION! [![Netlify Status](https://api.netlify.com/api/v1/badges/5c2e3629-bd79-49a6-adc5-55470ca0a5e7/deploy-status)](https://app.netlify.com/sites/lights-canada-action/deploys)
 
-Full source code for [Lights! Canada! Action!](https://canada.witterworld.com), the Wittertainment Canada Movie Road Trip.
+Full source code for [Lights! Canada! Action!](https://lights-canada-action.com), the Wittertainment Canada Movie Road Trip.
 
 ## How do I build it?
 
