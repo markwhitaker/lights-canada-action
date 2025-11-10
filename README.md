@@ -1,4 +1,4 @@
-![icon](images/logo72.png)
+![icon](images/icon72.png)
 
 # LIGHTS! CANADA! ACTION! [![Netlify Status](https://api.netlify.com/api/v1/badges/5c2e3629-bd79-49a6-adc5-55470ca0a5e7/deploy-status)](https://app.netlify.com/sites/lights-canada-action/deploys)
 
