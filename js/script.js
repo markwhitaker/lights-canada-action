@@ -97,7 +97,7 @@ $(function () {
             },
             onRegionClick: (_, stateCode) => showFilmDetails(stateCode),
             onRegionTipShow: (_, tip, code) => {
-                let film = _films[code];
+                const film = _films[code];
                 if (film) {
                     tip.text(`${film.state}: ${film.title} (${film.year})`);
                 }
@@ -201,8 +201,8 @@ $(function () {
     }
 
     function getMapColours() {
-        let colours = {};
-        for (let region in _map.regions) {
+        const colours = {};
+        for (const region in _map.regions) {
             colours[region] = _films[region]
                 ? _films[region].colour
                 : INACTIVE_MAP_COLOUR;
@@ -211,12 +211,12 @@ $(function () {
     }
 
     function getRandomActiveMapColour() {
-        let index = Math.floor(Math.random() * ACTIVE_MAP_COLOURS.length);
+        const index = Math.floor(Math.random() * ACTIVE_MAP_COLOURS.length);
         return ACTIVE_MAP_COLOURS[index];
     }
 
     function showFilmDetails(stateCode) {
-        let film = _films[stateCode];
+        const film = _films[stateCode];
 
         if (!film) {
             return;
