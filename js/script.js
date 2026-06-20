@@ -257,7 +257,7 @@ $(function () {
 
         $(".modal-header").css("background-color", film.colour);
 
-        $("#filmDetailsModal").modal();
+        new bootstrap.Modal("#filmDetailsModal").show();
     }
 
     function flagAltText(film) {
