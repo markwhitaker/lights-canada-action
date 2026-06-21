@@ -40,6 +40,7 @@ $(function () {
         initialiseMap();
         initialiseStatesList();
         initialiseMoviesList();
+        preloadImages();
     });
 
     //-----------------------------------------------------------
@@ -127,6 +128,20 @@ $(function () {
             "#listMovies",
             _filmsSortedByTitle,
             BUTTON_TYPE.TITLE);
+    }
+
+    async function preloadImages() {
+        await Promise.all(
+            _filmsSortedByTitle.map((film) => {
+                return new Promise(() => {
+                    const img = new Image();
+                    img.onerror = () => {
+                        console.warn(`Failed to load image for ${film.title}: ${film.image}`);
+                    };
+                    img.src = film.image;
+                });
+            })
+        );
     }
 
     function initialiseList(elementId, array, buttonType) {
