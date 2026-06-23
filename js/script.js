@@ -160,7 +160,7 @@ $(function () {
             .click(() => showFilmDetails(film.stateCode))
             .prepend($("<img/>")
                 .prop({
-                    src: film.flag,
+                    src: `/images/flags/${film.stateCode}.svg`,
                     alt: flagAltText(film)
                 })
                 .on("error", function () {
@@ -242,18 +242,15 @@ $(function () {
         $("#filmYear").text(film.year);
         $("#filmStateFlag")
             .prop({
-                src: film.flag,
+                src: `/images/flags/${film.stateCode}.svg`,
                 alt: flagAltText(film)
             });
 
-        $("#filmImageContainer")
-            .toggleClass("defaultImage", !film.image);
         $("#filmImage")
             .prop({
-                src: film.image,
+                src: `/images/posters/${film.stateCode}.jpg`,
                 alt: `Movie poster for ${film.title} (${film.year})`
-            })
-            .toggle(!!film.image);
+            });
 
         $("#filmOriginalTitle")
             .text(film.originalTitle)
